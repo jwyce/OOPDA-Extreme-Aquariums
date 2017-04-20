@@ -1,0 +1,19 @@
+****Extreme Aquarium INC Receipt Printout***
+Thank you for your business today. Your tank specifications are as follows: 
+Dimensions: 600 x 800
+****************************
+Fish: 
+Clownfish x3
+Bannerfish x1
+Lionfish x1
+Pufferfish x2
+Royal Gramma x4
+Starfish x1
+****************************
+System levels: 
+CO2: 21%
+O2: 79%
+PH: 10.4
+Water Hardness: 13mg/L
+****************************
+We hope you enjoyed our application! Have a great day.
