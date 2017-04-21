@@ -143,10 +143,7 @@ public class FishShop extends JFrame {
 		public void actionPerformed(ActionEvent arg) {
 			try {
 				validateTankEnvironment();
-				if (GenerateTankDescription.printFile(AquariumApp.getTank())) {
-					JOptionPane.showMessageDialog(null, "Description File Generated. Returning to shop...", "File Generated", JOptionPane.INFORMATION_MESSAGE);
-					tryAgainListener.actionPerformed(arg);
-				}
+				GenerateTankDescription.printFile(AquariumApp.getTank());
 			} catch (EnvironmentUnbalancedException e) {
 				JOptionPane.showMessageDialog(null, e.getMessage() + " Please try again.", "Tank Unbalanced!", JOptionPane.ERROR_MESSAGE);
 				restart();
