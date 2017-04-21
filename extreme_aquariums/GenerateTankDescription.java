@@ -12,13 +12,16 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class GenerateTankDescription {
 
-	public static void printFile(CustomerTank tank) {
+	public static boolean printFile(CustomerTank tank) {
 		JFileChooser saveFile = new JFileChooser();
 		saveFile.setDialogTitle("Save the Tank Description");
 		saveFile.setDialogType(JFileChooser.SAVE_DIALOG);
 		saveFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		saveFile.setFileFilter(new FileNameExtensionFilter("txt file", "txt"));
 		int saveOption = saveFile.showSaveDialog(null);
+		
+		if(saveOption == JFileChooser.CANCEL_OPTION)
+			return false;
 		
 		if(saveOption == JFileChooser.APPROVE_OPTION) {
 			String savePath = saveFile.getSelectedFile().getAbsolutePath();
@@ -27,6 +30,7 @@ public class GenerateTankDescription {
 				
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter(savePath))) { 
 				ArrayList<Fish> custFish = tank.getFish();
+				
 				writer.write("****Extreme Aquarium INC Receipt Printout***");
 				writer.newLine();
 				writer.write("Thank you for your business today. Your tank specifications are as follows: ");
@@ -75,5 +79,7 @@ public class GenerateTankDescription {
 				e.printStackTrace();
 			}
 		}
+		
+		return true;
 	}
 }
