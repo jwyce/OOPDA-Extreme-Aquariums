@@ -19,6 +19,20 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
+/**
+ * A GUI which allows the user to add fish of their selection to their tank,
+ * preview their tank, save a tank for later, open an existing tank, or simply to try again
+ * 
+ * @author Jared Wyce
+ * @author Jared Hamlin
+ * @author Josh Ginchereau
+ * @author Will Hou
+ * @see EnvironmentMeter
+ * @see FishPanel
+ * @version 4.25.2017
+ *
+ */
+
 public class FishShop extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -37,6 +51,9 @@ public class FishShop extends JFrame {
 	private JButton generateText = new JButton("Generate Receipt");
 	private JButton openTank = new JButton("Open Tank");
 
+	/**
+	 * @param availableFish a list of all available fish in the shop
+	 */
 	public FishShop(ArrayList<Fish> availableFish) {
 		this.availableFish = availableFish;
 		freshwaterFishPane = new JScrollPane(new FishPanel(availableFish, FreshwaterFish.class));
@@ -104,11 +121,11 @@ public class FishShop extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			CustomerTank currentTank = Serialize.open();
+			CustomerTank currentTank = Serialize.open();		// deserialize tank
 			if (currentTank != null) {
-				AquariumApp.openExistingTank(currentTank);
-				AquariumApp.getTank().refreshImage();
-				if(AquariumApp.getTank().getSize() != 0) {
+				AquariumApp.openExistingTank(currentTank);		// reinitialize customer's tank
+				AquariumApp.getTank().refreshImage();			// reinitialize all image variables
+				if(AquariumApp.getTank().getSize() != 0) {		// determine the configuration of radio buttons
 					Fish fish = AquariumApp.getTank().getFish().get(0);
 					if(fish instanceof SaltwaterFish) {
 						FishShop.freshwaterBtn.setSelected(false);
@@ -125,7 +142,7 @@ public class FishShop extends JFrame {
 					}
 				}
 			}
-			FishShop.environmentMeter.repaint();
+			FishShop.environmentMeter.repaint();				// update environment meter
 		}
 	};
 
@@ -197,6 +214,10 @@ public class FishShop extends JFrame {
 		}
 	};
 	
+	/**
+	 * This method will throw an exception if the user's tank environment is unbalanced
+	 * @throws EnvironmentUnbalancedException
+	 */
 	private void validateTankEnvironment() {
 		if(AquariumApp.getTank().getWaterHardess() > 119)
 			throw new EnvironmentUnbalancedException("Water is too hard!");
@@ -206,6 +227,10 @@ public class FishShop extends JFrame {
 			throw new EnvironmentUnbalancedException("Water is too basic!");
 	}
 	
+	/**
+	 * This method restarts the application. Useful if the user creates an unbalanced environment
+	 * and wishes to retry
+	 */
 	private void restart() {
 		AquariumApp.getTank().emptyTank();
 		FishShop.freshwaterBtn.setEnabled(true);

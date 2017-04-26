@@ -7,10 +7,24 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+/**
+ * Draws a meter for the customer's tank evironment.
+ * Warns user when something is out of balance
+ * 
+ * @author Jared Wyce
+ * @author Jared Hamlin
+ * @author Josh Ginchereau
+ * @author Will Hou
+ * @see CustomerTank
+ * @see Renderable
+ * @version 4.25.2017
+ *
+ */
+
 public class EnvironmentMeter extends JPanel implements Renderable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	public EnvironmentMeter() {
 		this.setPreferredSize(new Dimension(460, 55));
 		this.repaint();

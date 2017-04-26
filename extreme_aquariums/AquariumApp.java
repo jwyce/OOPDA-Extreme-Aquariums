@@ -3,6 +3,19 @@ package extreme_aquariums;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Drives the application. Creates the list of all available fish.
+ * Contains the tank to which the customer will add their selection of fish
+ * 
+ * @author Jared Wyce
+ * @author Jared Hamlin
+ * @author Josh Ginchereau
+ * @author Will Hou
+ * @see CustomerTank
+ * @version 4.25.2017
+ *
+ */
+
 public class AquariumApp {
 	
 	private static CustomerTank customerTank;
@@ -21,14 +34,26 @@ public class AquariumApp {
 		new FishShop(availableFish);
 	}
 	
+	/**
+	 * Used to reinitialize the user's fishtank when deserializing if opening a saved tank file
+	 * @param tank is a pre-configured tank
+	 * @see CustomerTank
+	 */
 	public static void openExistingTank(CustomerTank tank) {
 		customerTank = tank;
 	}
 	
+	/**
+	 * @return a reference to the customer's fishtank
+	 */
 	public static CustomerTank getTank() {
 		return customerTank;
 	}
 	
+	/**
+	 * Adds all available fish to a collection of fish
+	 * @param availableFish the reference to a list of fish
+	 */
 	private static void createAvailableFish(ArrayList<Fish> availableFish) {
 		availableFish.add(new FreshwaterFish("Algae Eater", Fish.Behavior.peaceful, Fish.SwimmingArea.bottom, "resources/freshwater/algaeeater.png"));
 		availableFish.add(new FreshwaterFish("Betta", Fish.Behavior.aggressive, Fish.SwimmingArea.top, "resources/freshwater/bettafish.png"));

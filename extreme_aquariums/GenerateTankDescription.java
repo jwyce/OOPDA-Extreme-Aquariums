@@ -10,8 +10,24 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * Generates a text file describing the user's tank configuration
+ * 
+ * @author Jared Wyce
+ * @author Jared Hamlin
+ * @author Josh Ginchereau
+ * @author Will Hou
+ * @see BufferedWriter
+ * @see CustomerTank
+ * @version 4.25.2017
+ *
+ */
+
 public class GenerateTankDescription {
 
+	/**
+	 * @param tank is the customer's tank
+	 */
 	public static void printFile(CustomerTank tank) {
 		JFileChooser saveFile = new JFileChooser();
 		saveFile.setDialogTitle("Save the Tank Description");

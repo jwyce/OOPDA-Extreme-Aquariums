@@ -7,6 +7,19 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * Draws a window showing the user's configured fishtank 
+ * with an environment meter 
+ * 
+ * @author Jared Wyce
+ * @author Jared Hamlin
+ * @author Josh Ginchereau
+ * @author Will Hou
+ * @see Graphics
+ * @version 4.25.2017
+ *
+ */
+
 public class TankPreview extends JFrame { 
 
 	private static final long serialVersionUID = 1L;
@@ -14,7 +27,6 @@ public class TankPreview extends JFrame {
 
 	public TankPreview() {
 		renderer = new Renderer();
-		
 		this.buildFrame();
 		this.add(renderer);
 		renderer.repaint();

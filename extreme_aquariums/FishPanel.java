@@ -13,18 +13,35 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * A panel which displays all fish of a certain type.
+ * Allows user to add fish to their tank
+ * 
+ * @author Jared Wyce
+ * @author Jared Hamlin
+ * @author Josh Ginchereau
+ * @author Will Hou
+ * @see FishShop
+ * @version 4.25.2017
+ *
+ */
+
 public class FishPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Fish> availableFish;
 
-	public FishPanel(ArrayList<Fish> availableFish, Class fishType) {
+	/**
+	 * @param availableFish a list of all available fish
+	 * @param fishType the subclass of fish for this instance of panel
+	 */
+	public FishPanel(ArrayList<Fish> availableFish, Class<? extends Fish> fishType) {
 		this.availableFish = availableFish;
 		this.setLayout(new BorderLayout());
 		this.addComponents(fishType);
 	}
 
-	private void addComponents(Class fishType) {
+	private void addComponents(Class<? extends Fish> fishType) {
 		JPanel fishIcon = new JPanel();
 		JPanel fishInfo = new JPanel();
 		JPanel purchasePanel = new JPanel();

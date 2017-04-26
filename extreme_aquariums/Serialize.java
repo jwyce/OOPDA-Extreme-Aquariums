@@ -15,6 +15,19 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * Serializes and save the customer's tank to a file or
+ * deserializes and opens a customer's existing tank from a file
+ * 
+ * @author Jared Wyce
+ * @author Jared Hamlin
+ * @author Josh Ginchereau
+ * @author Will Hou
+ * @see CustomerTank
+ * @version 4.25.2017
+ *
+ */
+
 public class Serialize {
 
 	public static CustomerTank open() {
@@ -44,6 +57,9 @@ public class Serialize {
 		return tank; 
 	}
 
+	/**
+	 * @param tank is the customer's tank
+	 */
 	public static void save(CustomerTank tank) {
 		JFileChooser saveTank = new JFileChooser();
 		saveTank.setDialogTitle("Save a Tank");
